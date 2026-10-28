@@ -2,7 +2,7 @@
 <%
     request.setCharacterEncoding("UTF-8");
 
-    // ---- Handle form submissions (add / renew / delete), then redirect ----
+   
     if ("POST".equalsIgnoreCase(request.getMethod())) {
         String action = request.getParameter("action");
         String result = "Nothing to do.";
@@ -41,7 +41,7 @@
         return;
     }
 
-    // ---- Load data for display ----
+
     String q = request.getParameter("q");
     if (q == null) q = "";
     List<String[]> plans = new ArrayList<>();
