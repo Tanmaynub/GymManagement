@@ -1,0 +1,27 @@
+<%@ page import="gym.DBUtil" %>
+<%
+    String flash = request.getParameter("msg");
+    String ctx = request.getContextPath();
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><%= pageTitle %> | Iron Gym</title>
+<link rel="stylesheet" href="<%= ctx %>/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">Samrat<span>GYM</span></div>
+  <nav>
+    <a href="index.jsp"      class="<%= "Dashboard".equals(pageTitle)  ? "active" : "" %>">Dashboard</a>
+    <a href="members.jsp"    class="<%= "Members".equals(pageTitle)    ? "active" : "" %>">Members</a>
+    <a href="plans.jsp"      class="<%= "Plans".equals(pageTitle)      ? "active" : "" %>">Plans</a>
+    <a href="attendance.jsp" class="<%= "Attendance".equals(pageTitle) ? "active" : "" %>">Attendance</a>
+  </nav>
+</header>
+<main class="container">
+<% if (flash != null && !flash.isEmpty()) { %>
+  <div class="flash"><%= DBUtil.esc(flash) %></div>
+<% } %>
