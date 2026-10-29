@@ -1,0 +1,27 @@
+<%@ page import="shop.DBUtil" %>
+<%
+    String flash = request.getParameter("msg");
+    String ctx = request.getContextPath();
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><%= pageTitle %> | ShopKeeper</title>
+<link rel="stylesheet" href="<%= ctx %>/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">SHOP<span>KEEPER</span></div>
+  <nav>
+    <a href="index.jsp"     class="<%= "Dashboard".equals(pageTitle) ? "active" : "" %>">Dashboard</a>
+    <a href="products.jsp"  class="<%= "Products".equals(pageTitle)  ? "active" : "" %>">Products</a>
+    <a href="customers.jsp" class="<%= "Customers".equals(pageTitle) ? "active" : "" %>">Customers</a>
+    <a href="billing.jsp"   class="<%= "Billing".equals(pageTitle)   ? "active" : "" %>">Billing</a>
+  </nav>
+</header>
+<main class="container">
+<% if (flash != null && !flash.isEmpty()) { %>
+  <div class="flash"><%= DBUtil.esc(flash) %></div>
+<% } %>
